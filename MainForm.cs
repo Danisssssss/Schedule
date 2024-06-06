@@ -14,13 +14,13 @@ namespace Coursework
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutProgram newAboutProgram = new AboutProgram();
+            AboutProgramForm newAboutProgram = new AboutProgramForm();
             newAboutProgram.ShowDialog();
         }
 
         private void scheduleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Schedule newSchedule = new Schedule();
+            ScheduleForm newSchedule = new ScheduleForm();
             newSchedule.Show();
         }
     }
