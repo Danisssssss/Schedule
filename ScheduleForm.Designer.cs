@@ -32,45 +32,87 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            columnHeader6 = new ColumnHeader();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
+            listView1.Dock = DockStyle.Fill;
             listView1.GridLines = true;
-            listView1.Location = new Point(12, 12);
+            listView1.Location = new Point(13, 13);
             listView1.Name = "listView1";
-            listView1.Size = new Size(443, 326);
+            listView1.Size = new Size(910, 418);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Name";
-            columnHeader1.Width = 100;
+            columnHeader1.Text = "Дисциплина";
+            columnHeader1.Width = 150;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Surname";
-            columnHeader2.Width = 100;
+            columnHeader2.Text = "Преподаватель";
+            columnHeader2.TextAlign = HorizontalAlignment.Center;
+            columnHeader2.Width = 150;
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Age";
-            columnHeader3.Width = 100;
+            columnHeader3.Text = "Группа";
+            columnHeader3.TextAlign = HorizontalAlignment.Center;
+            columnHeader3.Width = 150;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Кабинет";
+            columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = 150;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "День недели";
+            columnHeader5.TextAlign = HorizontalAlignment.Center;
+            columnHeader5.Width = 150;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Пара";
+            columnHeader6.TextAlign = HorizontalAlignment.Center;
+            columnHeader6.Width = 150;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(listView1, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(10);
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.Size = new Size(936, 544);
+            tableLayoutPanel1.TabIndex = 1;
             // 
             // ScheduleForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(listView1);
+            ClientSize = new Size(936, 544);
+            Controls.Add(tableLayoutPanel1);
             Name = "ScheduleForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Schedule";
             WindowState = FormWindowState.Maximized;
             Load += Schedule_Load;
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -80,5 +122,9 @@
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
+        private TableLayoutPanel tableLayoutPanel1;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ColumnHeader columnHeader6;
     }
 }

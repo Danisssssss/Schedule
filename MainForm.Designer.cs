@@ -1,4 +1,6 @@
-﻿namespace Coursework
+﻿using System.Windows.Forms;
+
+namespace Coursework
 {
     partial class MainForm
     {
@@ -30,6 +32,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             menuStrip1 = new MenuStrip();
+            справочникиToolStripMenuItem = new ToolStripMenuItem();
+            аудиторныйФондToolStripMenuItem = new ToolStripMenuItem();
+            преподавателиToolStripMenuItem = new ToolStripMenuItem();
+            факультетыToolStripMenuItem = new ToolStripMenuItem();
             scheduleToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
@@ -39,12 +45,40 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { scheduleToolStripMenuItem, aboutToolStripMenuItem, exitToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { справочникиToolStripMenuItem, scheduleToolStripMenuItem, aboutToolStripMenuItem, exitToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(900, 28);
+            menuStrip1.Size = new Size(932, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // справочникиToolStripMenuItem
+            // 
+            справочникиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { аудиторныйФондToolStripMenuItem, преподавателиToolStripMenuItem, факультетыToolStripMenuItem });
+            справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
+            справочникиToolStripMenuItem.Size = new Size(117, 24);
+            справочникиToolStripMenuItem.Text = "Справочники";
+            // 
+            // аудиторныйФондToolStripMenuItem
+            // 
+            аудиторныйФондToolStripMenuItem.Name = "аудиторныйФондToolStripMenuItem";
+            аудиторныйФондToolStripMenuItem.Size = new Size(224, 26);
+            аудиторныйФондToolStripMenuItem.Text = "Аудиторный фонд";
+            аудиторныйФондToolStripMenuItem.Click += аудиторныйФондToolStripMenuItem_Click;
+            // 
+            // преподавателиToolStripMenuItem
+            // 
+            преподавателиToolStripMenuItem.Name = "преподавателиToolStripMenuItem";
+            преподавателиToolStripMenuItem.Size = new Size(224, 26);
+            преподавателиToolStripMenuItem.Text = "Преподаватели";
+            преподавателиToolStripMenuItem.Click += преподавателиToolStripMenuItem_Click;
+            // 
+            // факультетыToolStripMenuItem
+            // 
+            факультетыToolStripMenuItem.Name = "факультетыToolStripMenuItem";
+            факультетыToolStripMenuItem.Size = new Size(224, 26);
+            факультетыToolStripMenuItem.Text = "Факультеты";
+            факультетыToolStripMenuItem.Click += факультетыToolStripMenuItem_Click;
             // 
             // scheduleToolStripMenuItem
             // 
@@ -71,7 +105,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 500);
+            ClientSize = new Size(932, 503);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
@@ -90,5 +124,9 @@
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem scheduleToolStripMenuItem;
+        private ToolStripMenuItem справочникиToolStripMenuItem;
+        private ToolStripMenuItem аудиторныйФондToolStripMenuItem;
+        private ToolStripMenuItem преподавателиToolStripMenuItem;
+        private ToolStripMenuItem факультетыToolStripMenuItem;
     }
 }
