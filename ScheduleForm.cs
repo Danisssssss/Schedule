@@ -28,6 +28,7 @@ namespace Coursework
             if (sqlConnection.State == ConnectionState.Open)
             {
                 MessageBox.Show("Подключение установлено");
+                LoadFaculties(comboBox1);
                 SqlDataReader dataReader = null;
                 listView1.Items.Clear();
                 try
@@ -80,6 +81,33 @@ namespace Coursework
             else
             {
                 this.Close();
+            }
+        }
+
+        private void LoadFaculties(ComboBox facultyComboBox)
+        {
+            SqlDataReader dataReader = null;
+            facultyComboBox.Items.Clear();
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("SELECT faculty_name FROM Faculties", sqlConnection);
+                dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    facultyComboBox.Items.Add(Convert.ToString(dataReader["faculty_name"]));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (dataReader != null && !dataReader.IsClosed)
+                {
+                    dataReader.Close();
+                }
             }
         }
 
