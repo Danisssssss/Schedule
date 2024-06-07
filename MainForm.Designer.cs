@@ -39,6 +39,7 @@ namespace Coursework
             scheduleToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
+            предметыToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,7 +55,7 @@ namespace Coursework
             // 
             // справочникиToolStripMenuItem
             // 
-            справочникиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { аудиторныйФондToolStripMenuItem, преподавателиToolStripMenuItem, факультетыToolStripMenuItem });
+            справочникиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { аудиторныйФондToolStripMenuItem, преподавателиToolStripMenuItem, факультетыToolStripMenuItem, предметыToolStripMenuItem });
             справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             справочникиToolStripMenuItem.Size = new Size(117, 24);
             справочникиToolStripMenuItem.Text = "Справочники";
@@ -101,6 +102,13 @@ namespace Coursework
             exitToolStripMenuItem.Text = "Выход";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
+            // предметыToolStripMenuItem
+            // 
+            предметыToolStripMenuItem.Name = "предметыToolStripMenuItem";
+            предметыToolStripMenuItem.Size = new Size(224, 26);
+            предметыToolStripMenuItem.Text = "Предметы";
+            предметыToolStripMenuItem.Click += предметыToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -128,5 +136,6 @@ namespace Coursework
         private ToolStripMenuItem аудиторныйФондToolStripMenuItem;
         private ToolStripMenuItem преподавателиToolStripMenuItem;
         private ToolStripMenuItem факультетыToolStripMenuItem;
+        private ToolStripMenuItem предметыToolStripMenuItem;
     }
 }

@@ -36,17 +36,17 @@
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             tableLayoutPanel1 = new TableLayoutPanel();
+            label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
-            listView1.Dock = DockStyle.Fill;
             listView1.GridLines = true;
-            listView1.Location = new Point(13, 13);
+            listView1.Location = new Point(13, 113);
             listView1.Name = "listView1";
-            listView1.Size = new Size(910, 418);
+            listView1.Size = new Size(910, 318);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -90,16 +90,28 @@
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(listView1, 0, 0);
+            tableLayoutPanel1.Controls.Add(listView1, 0, 1);
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.Padding = new Padding(10);
-            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tableLayoutPanel1.Size = new Size(936, 544);
             tableLayoutPanel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label1.Location = new Point(13, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(313, 28);
+            label1.TabIndex = 1;
+            label1.Text = "Расписание занятий для групп";
             // 
             // ScheduleForm
             // 
@@ -113,6 +125,7 @@
             WindowState = FormWindowState.Maximized;
             Load += Schedule_Load;
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -126,5 +139,6 @@
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
+        private Label label1;
     }
 }
