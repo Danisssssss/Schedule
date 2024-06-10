@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -130,16 +131,18 @@ namespace Coursework
                         Days.day_name, 
                         TimeSlots.start_time, 
                         TimeSlots.end_time, 
+                        TimeSlots.timeslot_name, 
                         Courses.course_name, 
                         Teachers.first_name, 
                         Classrooms.room_number,
-                        Schedule.specific
+                        SpecificsOfOccupations.specific_name 
                     FROM Schedule
                     JOIN Days ON Schedule.day_id = Days.day_id
                     JOIN TimeSlots ON Schedule.timeslot_id = TimeSlots.timeslot_id
                     JOIN Courses ON Schedule.course_id = Courses.course_id
                     JOIN Teachers ON Schedule.teacher_id = Teachers.teacher_id
                     JOIN Classrooms ON Schedule.classroom_id = Classrooms.classroom_id
+                    JOIN SpecificsOfOccupations ON Schedule.specific_id = SpecificsOfOccupations.specific_id
                     WHERE Schedule.group_id = @GroupId
                     ORDER BY Days.day_id, TimeSlots.start_time";
 
@@ -164,30 +167,39 @@ namespace Coursework
 
             // Настройка столбцов
             dataGridView1.Columns.Add("Day", "День");
+            dataGridView1.Columns.Add("Pair", "Пара");
             dataGridView1.Columns.Add("TimeSlot", "Время");
             dataGridView1.Columns.Add("Course", "Дисциплина");
             dataGridView1.Columns.Add("Type", "Тип");
             dataGridView1.Columns.Add("Teacher", "Преподаватели");
             dataGridView1.Columns.Add("Classroom", "Аудитория");
 
-            // Получение уникальных дней и временных слотов
+            // Установка режима авторазмера столбцов
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Получение уникальных дней
             var days = scheduleTable.AsEnumerable().Select(row => row.Field<string>("day_name")).Distinct().ToList();
-            var timeSlots = scheduleTable.AsEnumerable()
-                .Select(row => new
-                {
-                    StartTime = row.Field<TimeSpan>("start_time"),
-                    EndTime = row.Field<TimeSpan>("end_time")
-                })
-                .Distinct()
-                .ToList();
 
             foreach (var day in days)
             {
-                // Добавление заголовка дня
-                dataGridView1.Rows.Add(day);
-                dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+                // Получение уникальных временных слотов для конкретного дня
+                var timeSlotsForDay = scheduleTable.AsEnumerable()
+                    .Where(row => row.Field<string>("day_name") == day)
+                    .Select(row => new
+                    {
+                        StartTime = row.Field<TimeSpan>("start_time"),
+                        EndTime = row.Field<TimeSpan>("end_time"),
+                        TimeSlotName = row.Field<string>("timeslot_name")
+                    })
+                    .Distinct()
+                    .ToList();
 
-                foreach (var timeSlot in timeSlots)
+                // Добавление заголовка дня
+                int dayRowIndex = dataGridView1.Rows.Add(day);
+                var dayRow = dataGridView1.Rows[dayRowIndex];
+                dayRow.DefaultCellStyle.BackColor = Color.LightGray;
+
+                foreach (var timeSlot in timeSlotsForDay)
                 {
                     var rows = scheduleTable.AsEnumerable()
                         .Where(row => row.Field<string>("day_name") == day &&
@@ -202,9 +214,10 @@ namespace Coursework
                         {
                             dataGridView1.Rows.Add(
                                 "",
+                                timeSlot.TimeSlotName,
                                 timeSlotFormatted,
                                 row["course_name"],
-                                row["specific"],
+                                row["specific_name"],
                                 row["first_name"],
                                 row["room_number"]
                             );
@@ -213,12 +226,17 @@ namespace Coursework
                     else
                     {
                         // Если на это время нет занятий, добавляем пустую строку
-                        dataGridView1.Rows.Add("", timeSlotFormatted, "-", "", "", "");
+                        dataGridView1.Rows.Add("", timeSlot.TimeSlotName, timeSlotFormatted, "", "", "", "");
                     }
                 }
             }
-        }
 
+            // Установка равной ширины столбцов
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.FillWeight = 1;
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {

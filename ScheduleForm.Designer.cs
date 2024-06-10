@@ -59,7 +59,8 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));
-            tableLayoutPanel1.Size = new Size(936, 544);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(838, 542);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -84,7 +85,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(910, 144);
+            tableLayoutPanel2.Size = new Size(812, 144);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // label1
@@ -95,7 +96,7 @@
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(904, 48);
+            label1.Size = new Size(806, 48);
             label1.TabIndex = 0;
             label1.Text = "Расписание занятий студентов";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -108,7 +109,7 @@
             label2.FlatStyle = FlatStyle.Flat;
             label2.Location = new Point(3, 48);
             label2.Name = "label2";
-            label2.Size = new Size(448, 48);
+            label2.Size = new Size(400, 48);
             label2.TabIndex = 1;
             label2.Text = "Факультет";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -118,9 +119,9 @@
             label4.AutoSize = true;
             tableLayoutPanel2.SetColumnSpan(label4, 2);
             label4.Dock = DockStyle.Fill;
-            label4.Location = new Point(457, 48);
+            label4.Location = new Point(409, 48);
             label4.Name = "label4";
-            label4.Size = new Size(450, 48);
+            label4.Size = new Size(400, 48);
             label4.TabIndex = 3;
             label4.Text = "Группа";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -132,7 +133,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(3, 99);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(448, 28);
+            comboBox1.Size = new Size(400, 28);
             comboBox1.TabIndex = 4;
             comboBox1.Text = "Выберите факультет";
             // 
@@ -141,9 +142,9 @@
             tableLayoutPanel2.SetColumnSpan(comboBox2, 2);
             comboBox2.Dock = DockStyle.Fill;
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(457, 99);
+            comboBox2.Location = new Point(409, 99);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(450, 28);
+            comboBox2.Size = new Size(400, 28);
             comboBox2.TabIndex = 6;
             comboBox2.Text = "Выберите группу";
             // 
@@ -154,17 +155,17 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel3.Controls.Add(button1, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(13, 485);
+            tableLayoutPanel3.Location = new Point(13, 483);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(910, 46);
+            tableLayoutPanel3.Size = new Size(812, 46);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // button1
             // 
             button1.Dock = DockStyle.Fill;
-            button1.Location = new Point(713, 3);
+            button1.Location = new Point(615, 3);
             button1.Name = "button1";
             button1.Size = new Size(194, 40);
             button1.TabIndex = 0;
@@ -181,14 +182,14 @@
             dataGridView1.Location = new Point(13, 163);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(910, 316);
+            dataGridView1.Size = new Size(812, 314);
             dataGridView1.TabIndex = 3;
             // 
             // ScheduleForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(936, 544);
+            ClientSize = new Size(838, 542);
             Controls.Add(tableLayoutPanel1);
             Name = "ScheduleForm";
             StartPosition = FormStartPosition.CenterScreen;
