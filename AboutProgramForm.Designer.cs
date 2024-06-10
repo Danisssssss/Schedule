@@ -101,8 +101,10 @@
             // textBoxDescription
             // 
             textBoxDescription.BackColor = SystemColors.Control;
+            textBoxDescription.BorderStyle = BorderStyle.None;
             textBoxDescription.Cursor = Cursors.IBeam;
             textBoxDescription.Dock = DockStyle.Fill;
+            textBoxDescription.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             textBoxDescription.Location = new Point(214, 154);
             textBoxDescription.Multiline = true;
             textBoxDescription.Name = "textBoxDescription";
@@ -127,12 +129,12 @@
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.yd;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(13, 13);
             pictureBox1.Name = "pictureBox1";
             tableLayoutPanel1.SetRowSpan(pictureBox1, 5);
             pictureBox1.Size = new Size(195, 424);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 

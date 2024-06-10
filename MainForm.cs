@@ -91,6 +91,7 @@ namespace Coursework
             listView1.GridLines = true;
             listView1.Location = new Point(13, 13);
             listView1.Name = "listView1";
+            listView1.MaximumSize = new Size(910, 2000);
             listView1.Size = new Size(910, 418);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
@@ -118,6 +119,7 @@ namespace Coursework
             columnHeader4.Text = "Специфика";
             columnHeader4.TextAlign = HorizontalAlignment.Center;
             columnHeader4.Width = -2;
+
             // Добавляем панели и элементы на форму
             this.Controls.Add(tableLayoutPanel1);
 
@@ -198,6 +200,7 @@ namespace Coursework
             ColumnHeader columnHeader1 = new ColumnHeader();
             ColumnHeader columnHeader2 = new ColumnHeader();
             ColumnHeader columnHeader3 = new ColumnHeader();
+            ColumnHeader columnHeader4 = new ColumnHeader();
             TableLayoutPanel tableLayoutPanel1 = new TableLayoutPanel();
             TableLayoutPanel tableLayoutPanel2 = new TableLayoutPanel();
             TableLayoutPanel searchPanel = new TableLayoutPanel();
@@ -280,12 +283,13 @@ namespace Coursework
             выходButton.Click += new EventHandler(DeleteCreatedControls);
 
             // Настройка listView1
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             listView1.Dock = DockStyle.Fill;
             listView1.GridLines = true;
             listView1.Location = new Point(13, 53);
             listView1.Name = "listView1";
-            listView1.Size = new Size(874, 346);
+            listView1.MaximumSize = new Size(910, 2000);
+            listView1.Size = new Size(910, 418);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -302,7 +306,12 @@ namespace Coursework
             // Настройка columnHeader3
             columnHeader3.Text = "Должность";
             columnHeader3.TextAlign = HorizontalAlignment.Center;
-            columnHeader3.Width = -2;
+            columnHeader3.Width = 250;
+
+            // Настройка columnHeader4
+            columnHeader4.Text = "Кафедра";
+            columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = -2;
 
             // Добавляем панели и элементы на форму
             this.Controls.Add(tableLayoutPanel1);
@@ -342,7 +351,14 @@ namespace Coursework
             listView1.Items.Clear();
             try
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Teachers", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(
+                    "SELECT " +
+                    "teacher_id, " +
+                    "first_name, " +
+                    "teacher_post, " +
+                    "Cathedras.cathedra_name " +
+                    "FROM Teachers " +
+                    "JOIN Cathedras ON Teachers.cathedra_id = Cathedras.cathedra_id", sqlConnection);
                 dataReader = sqlCommand.ExecuteReader();
                 ListViewItem item = null;
 
@@ -352,6 +368,7 @@ namespace Coursework
                     Convert.ToString(dataReader["teacher_id"]),
                     Convert.ToString(dataReader["first_name"]),
                     Convert.ToString(dataReader["teacher_post"]),
+                    Convert.ToString(dataReader["cathedra_name"]),
                 });
                     listView1.Items.Add(item);
                 }
@@ -381,7 +398,14 @@ namespace Coursework
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(
-                        "SELECT * FROM Teachers WHERE first_name LIKE @searchText", sqlConnection);
+                        "SELECT " +
+                        "teacher_id, " +
+                        "first_name, " +
+                        "teacher_post, " +
+                        "Cathedras.cathedra_name " +
+                        "FROM Teachers " +
+                        "JOIN Cathedras ON Teachers.cathedra_id = Cathedras.cathedra_id " +
+                        "WHERE first_name LIKE @searchText", sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
 
                     dataReader = sqlCommand.ExecuteReader();
@@ -393,6 +417,7 @@ namespace Coursework
                         Convert.ToString(dataReader["teacher_id"]),
                         Convert.ToString(dataReader["first_name"]),
                         Convert.ToString(dataReader["teacher_post"]),
+                        Convert.ToString(dataReader["cathedra_name"]),
                     });
                         listView1.Items.Add(item);
                     }
@@ -470,6 +495,7 @@ namespace Coursework
             listView1.GridLines = true;
             listView1.Location = new Point(13, 13);
             listView1.Name = "listView1";
+            listView1.MaximumSize = new Size(910, 2000);
             listView1.Size = new Size(910, 418);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
@@ -482,7 +508,7 @@ namespace Coursework
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Наименование";
+            columnHeader2.Text = "Наименование факультета";
             columnHeader2.TextAlign = HorizontalAlignment.Left;
             columnHeader2.Width = -2;
 
@@ -602,6 +628,7 @@ namespace Coursework
             listView1.GridLines = true;
             listView1.Location = new Point(13, 13);
             listView1.Name = "listView1";
+            listView1.MaximumSize = new Size(910, 2000);
             listView1.Size = new Size(910, 418);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
@@ -609,12 +636,12 @@ namespace Coursework
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Код";
-            columnHeader1.Width = 100;
+            columnHeader1.Text = "Раздел";
+            columnHeader1.Width = 250;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Название предмета";
+            columnHeader2.Text = "Предмет";
             columnHeader2.TextAlign = HorizontalAlignment.Left;
             columnHeader2.Width = -2;
             // Добавляем панели и элементы на форму
@@ -641,8 +668,21 @@ namespace Coursework
                 listView1.Items.Clear();
                 try
                 {
+                    /*
+                     * "SELECT " +
+                        "teacher_id, " +
+                        "first_name, " +
+                        "teacher_post, " +
+                        "Cathedras.cathedra_name " +
+                        "FROM Teachers " +
+                        "JOIN Cathedras ON Teachers.cathedra_id = Cathedras.cathedra_id "
+                     */
                     SqlCommand sqlCommand = new SqlCommand(
-                        "SELECT * FROM Courses", sqlConnection);
+                        "SELECT " +
+                        "Sections.section_name, " +
+                        "course_name " +
+                        "FROM Courses " +
+                        "JOIN Sections ON Courses.section_Id = Sections.section_Id", sqlConnection);
 
                     dataReader = sqlCommand.ExecuteReader();
                     ListViewItem item = null;
@@ -650,8 +690,172 @@ namespace Coursework
                     while (dataReader.Read())
                     {
                         item = new ListViewItem(new string[] {
-                            Convert.ToString(dataReader["course_id"]),
+                            Convert.ToString(dataReader["section_name"]),
                             Convert.ToString(dataReader["course_name"]),
+                        });
+                        listView1.Items.Add(item);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (dataReader != null && !dataReader.IsClosed)
+                    {
+                        sqlConnection.Close();
+                    }
+                }
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void кафедрыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteCreatedControls(sender, e);
+            Text = "Главная программа - [Кафедры]";
+            // Создаем и настраиваем элементы
+            ColumnHeader columnHeader1 = new ColumnHeader();
+            ColumnHeader columnHeader2 = new ColumnHeader();
+            ColumnHeader columnHeader3 = new ColumnHeader();
+            ColumnHeader columnHeader4 = new ColumnHeader();
+            TableLayoutPanel tableLayoutPanel1 = new TableLayoutPanel();
+            TableLayoutPanel tableLayoutPanel2 = new TableLayoutPanel();
+            Button выходButton = new Button();
+            ListView listView1 = new ListView();
+
+            // Настройка tableLayoutPanel1
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 1);
+            tableLayoutPanel1.Controls.Add(listView1, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 28);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(10, 40, 10, 10);
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.Size = new Size(900, 472);
+            tableLayoutPanel1.TabIndex = 1;
+
+            // Настройка tableLayoutPanel2
+            tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.Controls.Add(выходButton, 3, 0);
+            tableLayoutPanel2.Dock = DockStyle.Bottom;
+            tableLayoutPanel2.Location = new Point(13, 409);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.Size = new Size(874, 50);
+            tableLayoutPanel2.TabIndex = 0;
+
+            // Настройка выходButton
+            выходButton.Dock = DockStyle.Fill;
+            выходButton.Location = new Point(657, 3);
+            выходButton.Name = "выходButton";
+            выходButton.Size = new Size(214, 44);
+            выходButton.TabIndex = 0;
+            выходButton.Text = "Выход";
+            выходButton.UseVisualStyleBackColor = true;
+            выходButton.Click += new EventHandler(DeleteCreatedControls);
+            // 
+            // listView1
+            // 
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            listView1.Dock = DockStyle.Fill;
+            listView1.GridLines = true;
+            listView1.Location = new Point(13, 13);
+            listView1.Name = "listView1";
+            listView1.MaximumSize = new Size(910, 2000);
+            listView1.Size = new Size(910, 418);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "ID";
+            columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Наименование факультета";
+            columnHeader2.TextAlign = HorizontalAlignment.Left;
+            columnHeader2.Width = 250;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Код. каф";
+            columnHeader3.TextAlign = HorizontalAlignment.Left;
+            columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Наименование кафедры";
+            columnHeader4.TextAlign = HorizontalAlignment.Left;
+            columnHeader4.Width = -2;
+
+            // Добавляем панели и элементы на форму
+            this.Controls.Add(tableLayoutPanel1);
+
+            // Сохраняем созданные элементы в список
+            createdControls.Add(tableLayoutPanel1);
+            createdControls.Add(tableLayoutPanel2);
+            createdControls.Add(выходButton);
+            createdControls.Add(listView1);
+
+            // Обновляем оформление панели
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.PerformLayout();
+
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ScheduleDB"].ConnectionString);
+            sqlConnection.Open();
+
+            if (sqlConnection.State == ConnectionState.Open)
+            {
+                SqlDataReader dataReader = null;
+                listView1.Items.Clear();
+                try
+                {
+                    /*
+                     * "SELECT " +
+                    "teacher_id, " +
+                    "first_name, " +
+                    "teacher_post, " +
+                    "Cathedras.cathedra_name " +
+                    "FROM Teachers " +
+                    "JOIN Cathedras ON Teachers.cathedra_id = Cathedras.cathedra_id"
+                     */
+                    SqlCommand sqlCommand = new SqlCommand(
+                        "SELECT " +
+                        "cathedra_id, " +
+                        "Faculties.faculty_name, " +
+                        "cathedra_code, " +
+                        "cathedra_name " +
+                        "FROM Cathedras " +
+                        "JOIN Faculties ON Cathedras.faculty_id = Faculties.faculty_id", sqlConnection);
+
+                    dataReader = sqlCommand.ExecuteReader();
+                    ListViewItem item = null;
+
+                    while (dataReader.Read())
+                    {
+                        item = new ListViewItem(new string[] {
+                            Convert.ToString(dataReader["cathedra_id"]),
+                            Convert.ToString(dataReader["faculty_name"]),
+                            Convert.ToString(dataReader["cathedra_code"]),
+                            Convert.ToString(dataReader["cathedra_name"]),
                         });
                         listView1.Items.Add(item);
                     }

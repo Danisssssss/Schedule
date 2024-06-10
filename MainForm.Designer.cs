@@ -36,10 +36,11 @@ namespace Coursework
             аудиторныйФондToolStripMenuItem = new ToolStripMenuItem();
             преподавателиToolStripMenuItem = new ToolStripMenuItem();
             факультетыToolStripMenuItem = new ToolStripMenuItem();
+            кафедрыToolStripMenuItem = new ToolStripMenuItem();
+            предметыToolStripMenuItem = new ToolStripMenuItem();
             scheduleToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            предметыToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,7 +56,7 @@ namespace Coursework
             // 
             // справочникиToolStripMenuItem
             // 
-            справочникиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { аудиторныйФондToolStripMenuItem, преподавателиToolStripMenuItem, факультетыToolStripMenuItem, предметыToolStripMenuItem });
+            справочникиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { аудиторныйФондToolStripMenuItem, преподавателиToolStripMenuItem, факультетыToolStripMenuItem, кафедрыToolStripMenuItem, предметыToolStripMenuItem });
             справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             справочникиToolStripMenuItem.Size = new Size(117, 24);
             справочникиToolStripMenuItem.Text = "Справочники";
@@ -81,11 +82,25 @@ namespace Coursework
             факультетыToolStripMenuItem.Text = "Факультеты";
             факультетыToolStripMenuItem.Click += факультетыToolStripMenuItem_Click;
             // 
+            // кафедрыToolStripMenuItem
+            // 
+            кафедрыToolStripMenuItem.Name = "кафедрыToolStripMenuItem";
+            кафедрыToolStripMenuItem.Size = new Size(224, 26);
+            кафедрыToolStripMenuItem.Text = "Кафедры";
+            кафедрыToolStripMenuItem.Click += кафедрыToolStripMenuItem_Click;
+            // 
+            // предметыToolStripMenuItem
+            // 
+            предметыToolStripMenuItem.Name = "предметыToolStripMenuItem";
+            предметыToolStripMenuItem.Size = new Size(224, 26);
+            предметыToolStripMenuItem.Text = "Предметы";
+            предметыToolStripMenuItem.Click += предметыToolStripMenuItem_Click;
+            // 
             // scheduleToolStripMenuItem
             // 
             scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
-            scheduleToolStripMenuItem.Size = new Size(180, 24);
-            scheduleToolStripMenuItem.Text = "Составить расписание";
+            scheduleToolStripMenuItem.Size = new Size(105, 24);
+            scheduleToolStripMenuItem.Text = "Расписание";
             scheduleToolStripMenuItem.Click += scheduleToolStripMenuItem_Click;
             // 
             // aboutToolStripMenuItem
@@ -101,13 +116,6 @@ namespace Coursework
             exitToolStripMenuItem.Size = new Size(67, 24);
             exitToolStripMenuItem.Text = "Выход";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
-            // 
-            // предметыToolStripMenuItem
-            // 
-            предметыToolStripMenuItem.Name = "предметыToolStripMenuItem";
-            предметыToolStripMenuItem.Size = new Size(224, 26);
-            предметыToolStripMenuItem.Text = "Предметы";
-            предметыToolStripMenuItem.Click += предметыToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -137,5 +145,6 @@ namespace Coursework
         private ToolStripMenuItem преподавателиToolStripMenuItem;
         private ToolStripMenuItem факультетыToolStripMenuItem;
         private ToolStripMenuItem предметыToolStripMenuItem;
+        private ToolStripMenuItem кафедрыToolStripMenuItem;
     }
 }
