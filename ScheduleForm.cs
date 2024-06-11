@@ -137,12 +137,13 @@ namespace Coursework
                         SpecificsOfOccupations.specific_name 
                     FROM Schedule
                     JOIN Days ON Schedule.day_id = Days.day_id
-                    JOIN TimeSlots ON Schedule.timeslot_id = TimeSlots.timeslot_id
-                    JOIN Courses ON Schedule.course_id = Courses.course_id
-                    JOIN Teachers ON Schedule.teacher_id = Teachers.teacher_id
-                    JOIN Classrooms ON Schedule.classroom_id = Classrooms.classroom_id
-                    JOIN SpecificsOfOccupations ON Schedule.specific_id = SpecificsOfOccupations.specific_id
-                    WHERE Schedule.group_id = @GroupId AND Schedule.weak_id = @WeakId
+                    JOIN TimeSlotDetails ON Schedule.timeslotdetail_id = TimeSlotDetails.timeslotdetail_id
+                    JOIN TimeSlots ON TimeSlotDetails.timeslot_id = TimeSlots.timeslot_id
+                    LEFT JOIN Courses ON TimeSlotDetails.course_id = Courses.course_id
+                    LEFT JOIN Teachers ON TimeSlotDetails.teacher_id = Teachers.teacher_id
+                    LEFT JOIN Classrooms ON TimeSlotDetails.classroom_id = Classrooms.classroom_id
+                    LEFT JOIN SpecificsOfOccupations ON TimeSlotDetails.specific_id = SpecificsOfOccupations.specific_id
+                    WHERE TimeSlotDetails.group_id = @GroupId AND Schedule.weak_number = @WeakId
                     ORDER BY Days.day_id, TimeSlots.start_time";
 
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
@@ -177,12 +178,12 @@ namespace Coursework
             // Установка режима авторазмера столбцов
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Получение уникальных дней
-            var days = scheduleTable.AsEnumerable().Select(row => row.Field<string>("day_name")).Distinct().ToList();
+            // Список всех дней недели
+            var weekDays = new List<string> { "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота" };
 
-            foreach (var day in days)
+            foreach (var day in weekDays)
             {
-                // Получение уникальных временных слотов для конкретного дня
+                // Получение расписания для конкретного дня
                 var timeSlotsForDay = scheduleTable.AsEnumerable()
                     .Where(row => row.Field<string>("day_name") == day)
                     .Select(row => new
@@ -199,17 +200,17 @@ namespace Coursework
                 var dayRow = dataGridView.Rows[dayRowIndex];
                 dayRow.DefaultCellStyle.BackColor = Color.LightGray;
 
-                foreach (var timeSlot in timeSlotsForDay)
+                if (timeSlotsForDay.Any())
                 {
-                    var rows = scheduleTable.AsEnumerable()
-                        .Where(row => row.Field<string>("day_name") == day &&
-                                      row.Field<TimeSpan>("start_time") == timeSlot.StartTime &&
-                                      row.Field<TimeSpan>("end_time") == timeSlot.EndTime);
-
-                    string timeSlotFormatted = $"{timeSlot.StartTime:hh\\:mm}-{timeSlot.EndTime:hh\\:mm}";
-
-                    if (rows.Any())
+                    foreach (var timeSlot in timeSlotsForDay)
                     {
+                        var rows = scheduleTable.AsEnumerable()
+                            .Where(row => row.Field<string>("day_name") == day &&
+                                          row.Field<TimeSpan>("start_time") == timeSlot.StartTime &&
+                                          row.Field<TimeSpan>("end_time") == timeSlot.EndTime);
+
+                        string timeSlotFormatted = $"{timeSlot.StartTime:hh\\:mm}-{timeSlot.EndTime:hh\\:mm}";
+
                         foreach (var row in rows)
                         {
                             dataGridView.Rows.Add(
@@ -223,11 +224,13 @@ namespace Coursework
                             );
                         }
                     }
-                    else
-                    {
-                        // Если на это время нет занятий, добавляем пустую строку
-                        dataGridView.Rows.Add("", timeSlot.TimeSlotName, timeSlotFormatted, "", "", "", "");
-                    }
+                }
+                else
+                {
+                    // Если на этот день нет занятий, добавляем строку с сообщением
+                    int emptyRowIndex = dataGridView.Rows.Add("", "", "", "Занятия по расписанию отсутствуют");
+                    var emptyRow = dataGridView.Rows[emptyRowIndex];
+                    emptyRow.DefaultCellStyle.Font = new Font(dataGridView.DefaultCellStyle.Font, FontStyle.Italic);
                 }
             }
 
