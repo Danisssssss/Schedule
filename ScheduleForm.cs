@@ -24,7 +24,6 @@ namespace Coursework
 
             if (sqlConnection.State == ConnectionState.Open)
             {
-                MessageBox.Show("Подключение установлено");
                 LoadFaculties(comboBox1);
 
                 comboBox1.SelectedIndexChanged += facultyComboBox_SelectedIndexChanged;
@@ -121,7 +120,7 @@ namespace Coursework
             // Можно оставить пустым или удалить, если не нужен автоматический вывод при выборе группы.
         }
 
-        private DataTable LoadScheduleForGroup(int groupId)
+        private DataTable LoadScheduleForGroup(int groupId, int weakId)
         {
             DataTable dataTable = new DataTable();
             try
@@ -143,11 +142,12 @@ namespace Coursework
                     JOIN Teachers ON Schedule.teacher_id = Teachers.teacher_id
                     JOIN Classrooms ON Schedule.classroom_id = Classrooms.classroom_id
                     JOIN SpecificsOfOccupations ON Schedule.specific_id = SpecificsOfOccupations.specific_id
-                    WHERE Schedule.group_id = @GroupId
+                    WHERE Schedule.group_id = @GroupId AND Schedule.weak_id = @WeakId
                     ORDER BY Days.day_id, TimeSlots.start_time";
 
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@GroupId", groupId);
+                sqlCommand.Parameters.AddWithValue("@WeakId", weakId);
 
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
                 dataAdapter.Fill(dataTable);
@@ -160,22 +160,22 @@ namespace Coursework
             return dataTable;
         }
 
-        private void DisplaySchedule(DataTable scheduleTable)
+        private void DisplaySchedule(DataTable scheduleTable, DataGridView dataGridView)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.Rows.Clear();
+            dataGridView.Columns.Clear();
+            dataGridView.Rows.Clear();
 
             // Настройка столбцов
-            dataGridView1.Columns.Add("Day", "День");
-            dataGridView1.Columns.Add("Pair", "Пара");
-            dataGridView1.Columns.Add("TimeSlot", "Время");
-            dataGridView1.Columns.Add("Course", "Дисциплина");
-            dataGridView1.Columns.Add("Type", "Тип");
-            dataGridView1.Columns.Add("Teacher", "Преподаватели");
-            dataGridView1.Columns.Add("Classroom", "Аудитория");
+            dataGridView.Columns.Add("Day", "День");
+            dataGridView.Columns.Add("Pair", "Пара");
+            dataGridView.Columns.Add("TimeSlot", "Время");
+            dataGridView.Columns.Add("Course", "Дисциплина");
+            dataGridView.Columns.Add("Type", "Тип");
+            dataGridView.Columns.Add("Teacher", "Преподаватели");
+            dataGridView.Columns.Add("Classroom", "Аудитория");
 
             // Установка режима авторазмера столбцов
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Получение уникальных дней
             var days = scheduleTable.AsEnumerable().Select(row => row.Field<string>("day_name")).Distinct().ToList();
@@ -195,8 +195,8 @@ namespace Coursework
                     .ToList();
 
                 // Добавление заголовка дня
-                int dayRowIndex = dataGridView1.Rows.Add(day);
-                var dayRow = dataGridView1.Rows[dayRowIndex];
+                int dayRowIndex = dataGridView.Rows.Add(day);
+                var dayRow = dataGridView.Rows[dayRowIndex];
                 dayRow.DefaultCellStyle.BackColor = Color.LightGray;
 
                 foreach (var timeSlot in timeSlotsForDay)
@@ -212,7 +212,7 @@ namespace Coursework
                     {
                         foreach (var row in rows)
                         {
-                            dataGridView1.Rows.Add(
+                            dataGridView.Rows.Add(
                                 "",
                                 timeSlot.TimeSlotName,
                                 timeSlotFormatted,
@@ -226,13 +226,13 @@ namespace Coursework
                     else
                     {
                         // Если на это время нет занятий, добавляем пустую строку
-                        dataGridView1.Rows.Add("", timeSlot.TimeSlotName, timeSlotFormatted, "", "", "", "");
+                        dataGridView.Rows.Add("", timeSlot.TimeSlotName, timeSlotFormatted, "", "", "", "");
                     }
                 }
             }
 
             // Установка равной ширины столбцов
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            foreach (DataGridViewColumn column in dataGridView.Columns)
             {
                 column.FillWeight = 1;
             }
@@ -243,8 +243,13 @@ namespace Coursework
             ComboBoxItem selectedGroup = comboBox2.SelectedItem as ComboBoxItem;
             if (selectedGroup != null)
             {
-                DataTable scheduleTable = LoadScheduleForGroup(selectedGroup.Value);
-                DisplaySchedule(scheduleTable);
+                // Загрузка и отображение расписания для первой недели
+                DataTable scheduleTableWeek1 = LoadScheduleForGroup(selectedGroup.Value, 1);
+                DisplaySchedule(scheduleTableWeek1, dataGridView1);
+
+                // Загрузка и отображение расписания для второй недели
+                DataTable scheduleTableWeek2 = LoadScheduleForGroup(selectedGroup.Value, 2);
+                DisplaySchedule(scheduleTableWeek2, dataGridView2);
             }
             else
             {

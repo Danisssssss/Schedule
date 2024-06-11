@@ -38,13 +38,20 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             button1 = new Button();
             tableLayoutPanel4 = new TableLayoutPanel();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
             dataGridView1 = new DataGridView();
-            label3 = new Label();
+            tabPage2 = new TabPage();
+            dataGridView2 = new DataGridView();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -180,16 +187,38 @@
             // 
             tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(dataGridView1, 0, 1);
-            tableLayoutPanel4.Controls.Add(label3, 0, 0);
+            tableLayoutPanel4.Controls.Add(tabControl1, 0, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(13, 163);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel4.Size = new Size(812, 314);
             tableLayoutPanel4.TabIndex = 3;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(3, 3);
+            tabControl1.Name = "tabControl1";
+            tabControl1.Padding = new Point(25, 3);
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(806, 308);
+            tabControl1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Location = new Point(4, 29);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(798, 275);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Первая неделя";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -199,24 +228,40 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 50);
+            dataGridView1.Location = new Point(3, 3);
             dataGridView1.Margin = new Padding(0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(812, 264);
+            dataGridView1.Size = new Size(792, 269);
             dataGridView1.TabIndex = 3;
             // 
-            // label3
+            // tabPage2
             // 
-            label3.AutoSize = true;
-            label3.Dock = DockStyle.Fill;
-            label3.Location = new Point(3, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(806, 50);
-            label3.TabIndex = 4;
-            label3.Text = "Первая неделя";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
+            tabPage2.Controls.Add(dataGridView2);
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(798, 275);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Вторая неделя";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridView2.BorderStyle = BorderStyle.None;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Dock = DockStyle.Fill;
+            dataGridView2.Location = new Point(3, 3);
+            dataGridView2.Margin = new Padding(0);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.Size = new Size(792, 269);
+            dataGridView2.TabIndex = 4;
             // 
             // ScheduleForm
             // 
@@ -234,8 +279,11 @@
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
@@ -249,8 +297,11 @@
         private ComboBox comboBox2;
         private TableLayoutPanel tableLayoutPanel3;
         private Button button1;
-        private DataGridView dataGridView1;
         private TableLayoutPanel tableLayoutPanel4;
-        private Label label3;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private DataGridView dataGridView1;
+        private TabPage tabPage2;
+        private DataGridView dataGridView2;
     }
 }
