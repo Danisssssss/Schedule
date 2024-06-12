@@ -1,0 +1,12 @@
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\Coursework.exe
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\Coursework.dll
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\Coursework.deps.json
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\Coursework.runtimeconfig.json
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\Coursework.dll.config
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\Coursework.pdb
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\System.Data.SqlClient.dll
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\runtimes\win-arm64\native\sni.dll
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\runtimes\win-x64\native\sni.dll
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\runtimes\win-x86\native\sni.dll
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\publish\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

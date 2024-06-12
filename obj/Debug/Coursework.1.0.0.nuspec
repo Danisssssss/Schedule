@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Coursework</id>
+    <version>1.0.0</version>
+    <authors>Coursework</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="6b11fb47bcb7bd425dccb17d9f99af13d7c66d31" />
+    <dependencies>
+      <group targetFramework="net8.0-windows7.0">
+        <dependency id="System.Data.SqlClient" version="4.8.6" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="D:\Программирование\C-sharp\Metrologia\Coursework\bin\Debug\net8.0-windows\Coursework.runtimeconfig.json" target="lib\net8.0-windows7.0\Coursework.runtimeconfig.json" />
+    <file src="D:\Программирование\C-sharp\Metrologia\Coursework\bin\Debug\net8.0-windows\Coursework.dll" target="lib\net8.0-windows7.0\Coursework.dll" />
+  </files>
+</package>

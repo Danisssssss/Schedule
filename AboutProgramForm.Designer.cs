@@ -104,7 +104,7 @@
             textBoxDescription.BorderStyle = BorderStyle.None;
             textBoxDescription.Cursor = Cursors.IBeam;
             textBoxDescription.Dock = DockStyle.Fill;
-            textBoxDescription.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            textBoxDescription.Font = new Font("Segoe UI Semibold", 8.5F, FontStyle.Bold, GraphicsUnit.Point, 204);
             textBoxDescription.Location = new Point(214, 154);
             textBoxDescription.Multiline = true;
             textBoxDescription.Name = "textBoxDescription";
