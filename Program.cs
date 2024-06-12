@@ -10,6 +10,9 @@ namespace Coursework
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            // Установка директории данных
+            AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
+
             ApplicationConfiguration.Initialize();
             Application.Run(new MainForm());
         }

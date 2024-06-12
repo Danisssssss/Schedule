@@ -6,6 +6,10 @@ namespace Coursework
 {
     public partial class MainForm : Form
     {
+        private SqlConnection sqlConnection = null;
+        private List<Control> createdControls = new List<Control>();
+        private string connectionString = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={AppDomain.CurrentDomain.GetData("DataDirectory")}ScheduleDB.mdf;Integrated Security=True";
+
         public MainForm()
         {
             InitializeComponent();
@@ -28,8 +32,6 @@ namespace Coursework
             newSchedule.Show();
         }
 
-        private SqlConnection sqlConnection = null;
-        private List<Control> createdControls = new List<Control>();
         private void ‡Û‰ËÚÓÌ˚È‘ÓÌ‰ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DeleteCreatedControls(sender, e);
@@ -135,7 +137,7 @@ namespace Coursework
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.PerformLayout();
 
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ScheduleDB"].ConnectionString);
+            sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
             if (sqlConnection.State == ConnectionState.Open)
@@ -332,7 +334,7 @@ namespace Coursework
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.PerformLayout();
 
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ScheduleDB"].ConnectionString);
+            sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
             if (sqlConnection.State == ConnectionState.Open)
@@ -527,7 +529,7 @@ namespace Coursework
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.PerformLayout();
 
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ScheduleDB"].ConnectionString);
+            sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
             if (sqlConnection.State == ConnectionState.Open)
@@ -659,7 +661,7 @@ namespace Coursework
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.PerformLayout();
 
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ScheduleDB"].ConnectionString);
+            sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
             if (sqlConnection.State == ConnectionState.Open)
@@ -668,15 +670,6 @@ namespace Coursework
                 listView1.Items.Clear();
                 try
                 {
-                    /*
-                     * "SELECT " +
-                        "teacher_id, " +
-                        "first_name, " +
-                        "teacher_post, " +
-                        "Cathedras.cathedra_name " +
-                        "FROM Teachers " +
-                        "JOIN Cathedras ON Teachers.cathedra_id = Cathedras.cathedra_id "
-                     */
                     SqlCommand sqlCommand = new SqlCommand(
                         "SELECT " +
                         "Sections.section_name, " +
@@ -819,7 +812,7 @@ namespace Coursework
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.PerformLayout();
 
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ScheduleDB"].ConnectionString);
+            sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
 
             if (sqlConnection.State == ConnectionState.Open)
@@ -828,15 +821,6 @@ namespace Coursework
                 listView1.Items.Clear();
                 try
                 {
-                    /*
-                     * "SELECT " +
-                    "teacher_id, " +
-                    "first_name, " +
-                    "teacher_post, " +
-                    "Cathedras.cathedra_name " +
-                    "FROM Teachers " +
-                    "JOIN Cathedras ON Teachers.cathedra_id = Cathedras.cathedra_id"
-                     */
                     SqlCommand sqlCommand = new SqlCommand(
                         "SELECT " +
                         "cathedra_id, " +

@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,6 +12,7 @@ namespace Coursework
     public partial class ScheduleForm : Form
     {
         private SqlConnection sqlConnection = null;
+        private string connectionString = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={AppDomain.CurrentDomain.GetData("DataDirectory")}ScheduleDB.mdf;Integrated Security=True";
 
         public ScheduleForm()
         {
@@ -19,20 +21,33 @@ namespace Coursework
 
         private void Schedule_Load(object sender, EventArgs e)
         {
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ScheduleDB"].ConnectionString);
-            sqlConnection.Open();
-
-            if (sqlConnection.State == ConnectionState.Open)
+            try
             {
-                LoadFaculties(comboBox1);
 
-                comboBox1.SelectedIndexChanged += facultyComboBox_SelectedIndexChanged;
-                comboBox2.SelectedIndexChanged += groupComboBox_SelectedIndexChanged;
-                button1.Click += button1_Click;
+                // Проверка существования файла базы данных
+                string dataDirectory = AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
+                string dbFilePath = Path.Combine(dataDirectory, "ScheduleDB.mdf");
+
+                sqlConnection = new SqlConnection(connectionString);
+                sqlConnection.Open();
+
+                if (sqlConnection.State == ConnectionState.Open)
+                {
+                    LoadFaculties(comboBox1);
+
+                    comboBox1.SelectedIndexChanged += facultyComboBox_SelectedIndexChanged;
+                    comboBox2.SelectedIndexChanged += groupComboBox_SelectedIndexChanged;
+                    button1.Click += button1_Click;
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка подключения!");
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.Close();
+                MessageBox.Show("Ошибка подключения!");
             }
         }
 
@@ -231,6 +246,7 @@ namespace Coursework
                     int emptyRowIndex = dataGridView.Rows.Add("", "", "", "Занятия по расписанию отсутствуют");
                     var emptyRow = dataGridView.Rows[emptyRowIndex];
                     emptyRow.DefaultCellStyle.Font = new Font(dataGridView.DefaultCellStyle.Font, FontStyle.Italic);
+                    // emptyRow.Cells[3].ColumnSpan = 4;
                 }
             }
 

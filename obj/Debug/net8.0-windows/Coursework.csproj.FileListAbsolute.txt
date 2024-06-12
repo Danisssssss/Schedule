@@ -16,7 +16,6 @@ D:\Программирование\C-sharp\Metrologia\Coursework\obj\Debug\net8
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Debug\net8.0-windows\Coursework.AuthorizationForm.resources
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Debug\net8.0-windows\Coursework.MainForm.resources
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Debug\net8.0-windows\Coursework.Properties.Resources.resources
-D:\Программирование\C-sharp\Metrologia\Coursework\bin\Debug\net8.0-windows\Coursework.dll.config
 D:\Программирование\C-sharp\Metrologia\Coursework\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
 D:\Программирование\C-sharp\Metrologia\Coursework\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
 D:\Программирование\C-sharp\Metrologia\Coursework\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
@@ -28,3 +27,5 @@ D:\Программирование\C-sharp\Metrologia\Coursework\obj\Debug\net8
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Debug\net8.0-windows\Coursework.AboutProgramForm.resources
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Debug\net8.0-windows\Coursework.sourcelink.json
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Debug\net8.0-windows\Coursework.ScheduleForm.resources
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Debug\net8.0-windows\ScheduleDB.mdf
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Debug\net8.0-windows\ScheduleDB_log.ldf
