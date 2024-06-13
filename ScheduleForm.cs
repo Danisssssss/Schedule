@@ -183,12 +183,19 @@ namespace Coursework
 
             // Настройка столбцов
             dataGridView.Columns.Add("Day", "День");
+            dataGridView.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
             dataGridView.Columns.Add("Pair", "Пара");
+            dataGridView.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
             dataGridView.Columns.Add("TimeSlot", "Время");
+            dataGridView.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
             dataGridView.Columns.Add("Course", "Дисциплина");
+            dataGridView.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
             dataGridView.Columns.Add("Type", "Тип");
+            dataGridView.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
             dataGridView.Columns.Add("Teacher", "Преподаватели");
+            dataGridView.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
             dataGridView.Columns.Add("Classroom", "Аудитория");
+            dataGridView.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             // Установка режима авторазмера столбцов
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

@@ -119,10 +119,10 @@
   </resheader>
   <data name="textBoxDescription.Text" xml:space="preserve">
     <value>Описание:
-Тема курсового проекта: Формирование расписания студентов. Вариант №18
+Тема курсового проекта: Расписание занятий. Вариант №18
 Среда разработки ПО: Инструментальная среда Visual Studio 2022
-Язык программирования: C#
-ПО включает x форм, y текстовых файла, z строк кода
+Язык программирования: Visual C#
+ПО включает 4 формы, 2024 строк кода
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />

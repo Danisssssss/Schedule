@@ -57,17 +57,17 @@ namespace Coursework
             tableLayoutPanel1.Padding = new Padding(10, 40, 10, 10);
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.Size = new Size(900, 472);
             tableLayoutPanel1.TabIndex = 1;
 
             // Õ‡ÒÚÓÈÍ‡ tableLayoutPanel2
             tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 3, 0);
+            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Bottom;
             tableLayoutPanel2.Location = new Point(13, 409);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -255,17 +255,17 @@ namespace Coursework
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.Size = new Size(900, 472);
             tableLayoutPanel1.TabIndex = 1;
 
             // Õ‡ÒÚÓÈÍ‡ tableLayoutPanel2
             tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 3, 0);
+            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Bottom;
             tableLayoutPanel2.Location = new Point(13, 409);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -461,17 +461,17 @@ namespace Coursework
             tableLayoutPanel1.Padding = new Padding(10, 40, 10, 10);
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.Size = new Size(900, 472);
             tableLayoutPanel1.TabIndex = 1;
 
             // Õ‡ÒÚÓÈÍ‡ tableLayoutPanel2
             tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 3, 0);
+            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Bottom;
             tableLayoutPanel2.Location = new Point(13, 409);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -594,17 +594,17 @@ namespace Coursework
             tableLayoutPanel1.Padding = new Padding(10, 40, 10, 10);
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.Size = new Size(900, 472);
             tableLayoutPanel1.TabIndex = 1;
 
             // Õ‡ÒÚÓÈÍ‡ tableLayoutPanel2
             tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 3, 0);
+            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Bottom;
             tableLayoutPanel2.Location = new Point(13, 409);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -732,17 +732,17 @@ namespace Coursework
             tableLayoutPanel1.Padding = new Padding(10, 40, 10, 10);
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.Size = new Size(900, 472);
             tableLayoutPanel1.TabIndex = 1;
 
             // Õ‡ÒÚÓÈÍ‡ tableLayoutPanel2
             tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 3, 0);
+            tableLayoutPanel2.Controls.Add(‚˚ıÓ‰Button, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Bottom;
             tableLayoutPanel2.Location = new Point(13, 409);
             tableLayoutPanel2.Name = "tableLayoutPanel2";

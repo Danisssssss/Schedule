@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScheduleForm));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             label1 = new Label();
@@ -140,23 +141,23 @@
             // 
             tableLayoutPanel2.SetColumnSpan(comboBox1, 2);
             comboBox1.Dock = DockStyle.Fill;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(3, 99);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(400, 28);
             comboBox1.TabIndex = 4;
-            comboBox1.Text = "Выберите факультет";
             // 
             // comboBox2
             // 
             tableLayoutPanel2.SetColumnSpan(comboBox2, 2);
             comboBox2.Dock = DockStyle.Fill;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(409, 99);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(400, 28);
             comboBox2.TabIndex = 6;
-            comboBox2.Text = "Выберите группу";
             // 
             // tableLayoutPanel3
             // 
@@ -269,9 +270,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(838, 542);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ScheduleForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Schedule";
+            Text = "Расписание";
             WindowState = FormWindowState.Maximized;
             Load += Schedule_Load;
             tableLayoutPanel1.ResumeLayout(false);

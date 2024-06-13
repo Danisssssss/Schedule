@@ -66,7 +66,6 @@
             passwordInput.Name = "passwordInput";
             passwordInput.Size = new Size(160, 30);
             passwordInput.TabIndex = 4;
-            passwordInput.Text = "ghjuhfvvbhjdfybt";
             passwordInput.UseSystemPasswordChar = true;
             // 
             // loginInput
@@ -77,7 +76,6 @@
             loginInput.Name = "loginInput";
             loginInput.Size = new Size(160, 30);
             loginInput.TabIndex = 3;
-            loginInput.Text = "user";
             // 
             // sendAuthorizationBtn
             // 

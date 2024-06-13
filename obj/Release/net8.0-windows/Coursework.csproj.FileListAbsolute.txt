@@ -1,5 +1,4 @@
 D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\Coursework.exe
-D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\Coursework.dll.config
 D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\Coursework.deps.json
 D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\Coursework.runtimeconfig.json
 D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\Coursework.dll
@@ -28,3 +27,5 @@ D:\Программирование\C-sharp\Metrologia\Coursework\obj\Release\ne
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Release\net8.0-windows\Coursework.pdb
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Release\net8.0-windows\Coursework.genruntimeconfig.cache
 D:\Программирование\C-sharp\Metrologia\Coursework\obj\Release\net8.0-windows\ref\Coursework.dll
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\ScheduleDB.mdf
+D:\Программирование\C-sharp\Metrologia\Coursework\bin\Release\net8.0-windows\ScheduleDB_log.ldf
